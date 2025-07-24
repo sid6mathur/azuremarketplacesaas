@@ -2,6 +2,8 @@
 
 This markdown file can be passed as `autorest fulfillment.md`, and the block below will be automagically parsed as configuration for the AutoRest code generation step. 
 
+See [here for Go-specifc AutoRest options](https://github.com/Azure/autorest/blob/main/docs/generate/flags.md#go-flags).
+
 ``` yaml
 go: true
 output-folder: './fulfillment'

@@ -6,19 +6,31 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/runtime"
 )
 
-const host = "https://marketplaceapi.microsoft.com/api"
+// The well-know default scope for SaaS fulfillment APIs as described here: https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-registration#request-body
+const marketplaceSaaSFulfillmentApiScope = "20e940b3-4c77-4b0b-9a53-9e16a1b010a7/.default"
+
+// API endpoint for Azure Marketplace SaaS publisher operations
+const endpoint = "https://marketplaceapi.microsoft.com/api"
 
 // NewFulfillmentClient creates a new instance of a SaaS fulfillment client and an API operation status (tracking) client. Usually you only need the former.
 // credential - used to authorize requests. Usually a credential from azidentity.
 // options - pass nil to accept the default values.
-func NewFulfillmentClient(credential azcore.TokenCredential, options *policy.ClientOptions) (foc *OperationsClient, soc *SubscriptionOperationsClient, err error) {
+func NewFulfillmentClient(credential azcore.TokenCredential, options *policy.ClientOptions) (*OperationsClient, error) {
 	popts := runtime.PipelineOptions{
-		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{}, nil)}}
+		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{marketplaceSaaSFulfillmentApiScope}, nil)}}
 	cl, err := azcore.NewClient(moduleName, moduleVersion, popts, options)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	return &OperationsClient{internal: cl, endpoint: host},
-		&SubscriptionOperationsClient{internal: cl, endpoint: host},
-		nil
+	return &OperationsClient{internal: cl, endpoint: endpoint}, nil
+}
+
+func NewSubscriptionOperationsClient(credential azcore.TokenCredential, options *policy.ClientOptions) (*SubscriptionOperationsClient, error) {
+	popts := runtime.PipelineOptions{
+		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{marketplaceSaaSFulfillmentApiScope}, nil)}}
+	cl, err := azcore.NewClient(moduleName, moduleVersion, popts, options)
+	if err != nil {
+		return nil, err
+	}
+	return &SubscriptionOperationsClient{internal: cl, endpoint: endpoint}, nil
 }
