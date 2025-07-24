@@ -12,7 +12,7 @@ type OperationsClientActivateSubscriptionResponse struct {
 
 // OperationsClientDeleteSubscriptionResponse contains the response from method OperationsClient.DeleteSubscription.
 type OperationsClientDeleteSubscriptionResponse struct {
-	// OperationLocationURI contains the information returned from the Operation-Location header response.
+// OperationLocationURI contains the information returned from the Operation-Location header response.
 	OperationLocationURI *string
 }
 
@@ -33,13 +33,13 @@ type OperationsClientListSubscriptionsResponse struct {
 
 // OperationsClientResolveResponse contains the response from method OperationsClient.Resolve.
 type OperationsClientResolveResponse struct {
-	// Summary of the subscription
+// Summary of the subscription
 	ResolvedSubscription
 }
 
 // OperationsClientUpdateSubscriptionResponse contains the response from method OperationsClient.UpdateSubscription.
 type OperationsClientUpdateSubscriptionResponse struct {
-	// OperationLocationURI contains the information returned from the Operation-Location header response.
+// OperationLocationURI contains the information returned from the Operation-Location header response.
 	OperationLocationURI *string
 }
 

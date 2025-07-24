@@ -99,17 +99,17 @@ type SubscriberPlan struct {
 type Subscription struct {
 	AllowedCustomerOperations []*AllowedCustomerOperationsEnum
 
-	// Indicating whether the subscription will renew automatically.
+// Indicating whether the subscription will renew automatically.
 	AutoRenew *bool
 	Beneficiary *AADIdentifier
 	Created *time.Time
 	ID *string
 
-	// true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free
+// true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free
 // trial.(optional field - default false)
 	IsFreeTrial *bool
 
-	// Indicating whether the current subscription is a test asset.
+// Indicating whether the current subscription is a test asset.
 	IsTest *bool
 	Name *string
 	OfferID *string
@@ -118,13 +118,13 @@ type Subscription struct {
 	Purchaser *AADIdentifier
 	Quantity *int32
 
-	// Indicates the status of the operation.
+// Indicates the status of the operation.
 	SaasSubscriptionStatus *SubscriptionStatusEnum
 
-	// Possible Values are None, Csp (Csp sandbox purchase)
+// Possible Values are None, Csp (Csp sandbox purchase)
 	SandboxType *SandboxTypeEnum
 
-	// Dry Run indicates all transactions run as Test-Mode in the commerce stack
+// Dry Run indicates all transactions run as Test-Mode in the commerce stack
 	SessionMode *SessionModeEnum
 	Term *SubscriptionTerm
 }
@@ -140,7 +140,7 @@ type SubscriptionTerm struct {
 }
 
 type SubscriptionsResponse struct {
-	// Link to get the next set of subscriptions.
+// Link to get the next set of subscriptions.
 	NextLink *string
 	Subscriptions []*Subscription
 }

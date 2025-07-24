@@ -20,6 +20,7 @@ import (
 // Don't use this type directly, use a constructor function instead.
 type OperationsClient struct {
 	internal *azcore.Client
+	endpoint string
 }
 
 // ActivateSubscription - Use this call to activate a subscription.
@@ -52,7 +53,7 @@ func (client *OperationsClient) activateSubscriptionCreateRequest(ctx context.Co
 		return nil, errors.New("parameter subscriptionID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +69,7 @@ func (client *OperationsClient) activateSubscriptionCreateRequest(ctx context.Co
 	if err := runtime.MarshalAsJSON(req, body); err != nil {
 	return nil, err
 }
-	return req, nil
+;	return req, nil
 }
 
 // DeleteSubscription - Unsubscribe and delete the specified subscription.
@@ -102,7 +103,7 @@ func (client *OperationsClient) deleteSubscriptionCreateRequest(ctx context.Cont
 		return nil, errors.New("parameter subscriptionID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodDelete, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodDelete, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -158,7 +159,7 @@ func (client *OperationsClient) getSubscriptionCreateRequest(ctx context.Context
 		return nil, errors.New("parameter subscriptionID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -215,7 +216,7 @@ func (client *OperationsClient) listAvailablePlansCreateRequest(ctx context.Cont
 		return nil, errors.New("parameter subscriptionID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -270,7 +271,7 @@ func (client *OperationsClient) NewListSubscriptionsPager(options *OperationsCli
 // listSubscriptionsCreateRequest creates the ListSubscriptions request.
 func (client *OperationsClient) listSubscriptionsCreateRequest(ctx context.Context, options *OperationsClientListSubscriptionsOptions) (*policy.Request, error) {
 	urlPath := "/saas/subscriptions/"
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -332,7 +333,7 @@ func (client *OperationsClient) Resolve(ctx context.Context, xmsMarketplaceToken
 // resolveCreateRequest creates the Resolve request.
 func (client *OperationsClient) resolveCreateRequest(ctx context.Context, xmsMarketplaceToken string, options *OperationsClientResolveOptions) (*policy.Request, error) {
 	urlPath := "/saas/subscriptions/resolve"
-	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -390,7 +391,7 @@ func (client *OperationsClient) updateSubscriptionCreateRequest(ctx context.Cont
 		return nil, errors.New("parameter subscriptionID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodPatch, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodPatch, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -406,7 +407,7 @@ func (client *OperationsClient) updateSubscriptionCreateRequest(ctx context.Cont
 	if err := runtime.MarshalAsJSON(req, body); err != nil {
 	return nil, err
 }
-	return req, nil
+;	return req, nil
 }
 
 // updateSubscriptionHandleResponse handles the UpdateSubscription response.

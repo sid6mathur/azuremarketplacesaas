@@ -20,6 +20,7 @@ import (
 // Don't use this type directly, use a constructor function instead.
 type SubscriptionOperationsClient struct {
 	internal *azcore.Client
+	endpoint string
 }
 
 // GetOperationStatus - Enables the publisher to track the status of the specified triggered async operation (such as Subscribe,
@@ -58,7 +59,7 @@ func (client *SubscriptionOperationsClient) getOperationStatusCreateRequest(ctx 
 		return nil, errors.New("parameter operationID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{operationId}", url.PathEscape(operationID))
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -115,7 +116,7 @@ func (client *SubscriptionOperationsClient) listOperationsCreateRequest(ctx cont
 		return nil, errors.New("parameter subscriptionID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{subscriptionId}", url.PathEscape(subscriptionID))
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -175,7 +176,7 @@ func (client *SubscriptionOperationsClient) updateOperationStatusCreateRequest(c
 		return nil, errors.New("parameter operationID cannot be empty")
 	}
 	urlPath = strings.ReplaceAll(urlPath, "{operationId}", url.PathEscape(operationID))
-	req, err := runtime.NewRequest(ctx, http.MethodPatch, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodPatch, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -191,6 +192,6 @@ func (client *SubscriptionOperationsClient) updateOperationStatusCreateRequest(c
 	if err := runtime.MarshalAsJSON(req, body); err != nil {
 	return nil, err
 }
-	return req, nil
+;	return req, nil
 }
 
