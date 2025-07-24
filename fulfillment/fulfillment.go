@@ -8,7 +8,7 @@ import (
 
 const host = "https://marketplaceapi.microsoft.com/api"
 
-// NewFulfillmentClient creates a new instance of a SaaS fulfillment client and an API status tracking client. Usually you only need the former.
+// NewFulfillmentClient creates a new instance of a SaaS fulfillment client and an API operation status (tracking) client. Usually you only need the former.
 // credential - used to authorize requests. Usually a credential from azidentity.
 // options - pass nil to accept the default values.
 func NewFulfillmentClient(credential azcore.TokenCredential, options *policy.ClientOptions) (foc *OperationsClient, soc *SubscriptionOperationsClient, err error) {
