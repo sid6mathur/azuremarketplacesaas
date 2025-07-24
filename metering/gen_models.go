@@ -17,95 +17,95 @@ type BatchUsageEventOkResponse struct {
 }
 
 type GetUsageEvent struct {
-	// Azure Subscription Id
+// Azure Subscription Id
 	AzureSubscriptionID *string
 
-	// Dimension
+// Dimension
 	Dimension *string
 
-	// OfferId
+// OfferId
 	OfferID *string
 
-	// OfferName
+// OfferName
 	OfferName *string
 
-	// OfferType
+// OfferType
 	OfferType *string
 
-	// PlanId
+// PlanId
 	PlanID *string
 
-	// PlanName
+// PlanName
 	PlanName *string
 
-	// Processed Quantity
+// Processed Quantity
 	ProcessedQuantity *float64
 
-	// Recon Status
+// Recon Status
 	ReconStatus *ReconStatusEnum
 
-	// Submitted count
+// Submitted count
 	SubmittedCount *float64
 
-	// Submitted Quantity
+// Submitted Quantity
 	SubmittedQuantity *float64
 
-	// Time in UTC when the usage event occurred
+// Time in UTC when the usage event occurred
 	UsageDate *time.Time
 
-	// Identifier of the resource against which usage is emitted
+// Identifier of the resource against which usage is emitted
 	UsageResourceID *string
 }
 
 type UsageBatchEventOkMessage struct {
-	// Dimension identifier
+// Dimension identifier
 	Dimension *string
 
-	// Time in UTC when the usage event occurred
+// Time in UTC when the usage event occurred
 	EffectiveStartTime *time.Time
 	Error *UsageEventConflictResponse
 
-	// Time this message was created in UTC
+// Time this message was created in UTC
 	MessageTime *time.Time
 
-	// Plan associated with the purchased offer
+// Plan associated with the purchased offer
 	PlanID *string
 
-	// Number of units consumed
+// Number of units consumed
 	Quantity *float64
 
-	// Identifier of the resource against which usage is emitted
+// Identifier of the resource against which usage is emitted
 	ResourceID *string
 
-	// Identifier of the managed app resource against which usage is emitted
+// Identifier of the managed app resource against which usage is emitted
 	ResourceURI *string
 
-	// Status of the operation.
+// Status of the operation.
 	Status *UsageEventStatusEnum
 
-	// Unique identifier associated with the usage event
+// Unique identifier associated with the usage event
 	UsageEventID *string
 }
 
 type UsageEvent struct {
-	// Dimension identifier
+// Dimension identifier
 	Dimension *string
 
-	// Time in UTC when the usage event occurred
+// Time in UTC when the usage event occurred
 	EffectiveStartTime *time.Time
 
-	// Plan associated with the purchased offer
+// Plan associated with the purchased offer
 	PlanID *string
 
-	// Number of units consumed
+// Number of units consumed
 	Quantity *float64
 
-	// subscriptionId property value for SaaS offer subscriptions; resourceUsageId property on the managed application resource
+// subscriptionId property value for SaaS offer subscriptions; resourceUsageId property on the managed application resource
 // for managed application offers. For managed applications, only use one of
 // resourceId or resourceUri.
 	ResourceID *string
 
-	// Resource URI for the managed app. Used with managed applications. Only use resourceUri or resourceId, but never both.
+// Resource URI for the managed app. Used with managed applications. Only use resourceUri or resourceId, but never both.
 	ResourceURI *string
 }
 
@@ -133,31 +133,31 @@ type UsageEventConflictResponseAdditionalInfo struct {
 }
 
 type UsageEventOkResponse struct {
-	// Dimension identifier
+// Dimension identifier
 	Dimension *string
 
-	// Time in UTC when the usage event occurred
+// Time in UTC when the usage event occurred
 	EffectiveStartTime *time.Time
 
-	// Time this message was created in UTC
+// Time this message was created in UTC
 	MessageTime *time.Time
 
-	// Plan associated with the purchased offer
+// Plan associated with the purchased offer
 	PlanID *string
 
-	// Number of units consumed
+// Number of units consumed
 	Quantity *float64
 
-	// Identifier of the resource against which usage is emitted
+// Identifier of the resource against which usage is emitted
 	ResourceID *string
 
-	// Identifier of the managed app resource against which usage is emitted
+// Identifier of the managed app resource against which usage is emitted
 	ResourceURI *string
 
-	// Status of the operation.
+// Status of the operation.
 	Status *UsageEventStatusEnum
 
-	// Unique identifier associated with the usage event
+// Unique identifier associated with the usage event
 	UsageEventID *string
 }
 

@@ -18,6 +18,7 @@ import (
 // Don't use this type directly, use a constructor function instead.
 type OperationsClient struct {
 	internal *azcore.Client
+	endpoint string
 }
 
 // GetUsageEvent - You can call the usage events API to get the list of usage events.
@@ -48,7 +49,7 @@ func (client *OperationsClient) GetUsageEvent(ctx context.Context, usageStartDat
 // getUsageEventCreateRequest creates the GetUsageEvent request.
 func (client *OperationsClient) getUsageEventCreateRequest(ctx context.Context, usageStartDate time.Time, options *OperationsClientGetUsageEventOptions) (*policy.Request, error) {
 	urlPath := "/usageEvents"
-	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodGet, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -122,7 +123,7 @@ func (client *OperationsClient) PostBatchUsageEvent(ctx context.Context, body Ba
 // postBatchUsageEventCreateRequest creates the PostBatchUsageEvent request.
 func (client *OperationsClient) postBatchUsageEventCreateRequest(ctx context.Context, body BatchUsageEvent, options *OperationsClientPostBatchUsageEventOptions) (*policy.Request, error) {
 	urlPath := "/batchUsageEvent"
-	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +140,7 @@ func (client *OperationsClient) postBatchUsageEventCreateRequest(ctx context.Con
 	if err := runtime.MarshalAsJSON(req, body); err != nil {
 	return nil, err
 }
-	return req, nil
+;	return req, nil
 }
 
 // postBatchUsageEventHandleResponse handles the PostBatchUsageEvent response.
@@ -178,7 +179,7 @@ func (client *OperationsClient) PostUsageEvent(ctx context.Context, body UsageEv
 // postUsageEventCreateRequest creates the PostUsageEvent request.
 func (client *OperationsClient) postUsageEventCreateRequest(ctx context.Context, body UsageEvent, options *OperationsClientPostUsageEventOptions) (*policy.Request, error) {
 	urlPath := "/usageEvent"
-	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(	host, urlPath))
+	req, err := runtime.NewRequest(ctx, http.MethodPost, runtime.JoinPaths(client.endpoint, urlPath))
 	if err != nil {
 		return nil, err
 	}
@@ -195,7 +196,7 @@ func (client *OperationsClient) postUsageEventCreateRequest(ctx context.Context,
 	if err := runtime.MarshalAsJSON(req, body); err != nil {
 	return nil, err
 }
-	return req, nil
+;	return req, nil
 }
 
 // postUsageEventHandleResponse handles the PostUsageEvent response.

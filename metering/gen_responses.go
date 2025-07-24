@@ -7,7 +7,7 @@ package metering
 
 // OperationsClientGetUsageEventResponse contains the response from method OperationsClient.GetUsageEvent.
 type OperationsClientGetUsageEventResponse struct {
-	// Array of GetUsageEvent
+// Array of GetUsageEvent
 	GetUsageEventArray []*GetUsageEvent
 }
 

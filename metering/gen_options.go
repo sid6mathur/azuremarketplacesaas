@@ -9,55 +9,55 @@ import "time"
 
 // OperationsClientGetUsageEventOptions contains the optional parameters for the OperationsClient.GetUsageEvent method.
 type OperationsClientGetUsageEventOptions struct {
-	// Azure Subscription Id.
+// Azure Subscription Id.
 	AzureSubscriptionID *string
 
-	// A unique string value for operation on the client. This parameter correlates all events from client operation with events
+// A unique string value for operation on the client. This parameter correlates all events from client operation with events
 // on the server side. If this value isn't provided, one will be generated and
 // provided in the response headers.
 	CorrelationID *string
 
-	// DimensionId.
+// DimensionId.
 	Dimension *string
 
-	// OfferId.
+// OfferId.
 	OfferID *string
 
-	// PlanId.
+// PlanId.
 	PlanID *string
 
-	// Recon Status.
+// Recon Status.
 	ReconStatus *ReconStatusEnum
 
-	// A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
+// A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
 // be generated and provided in the response headers.
 	RequestID *string
 
-	// DateTime in ISO8601 format. Default = current date.
+// DateTime in ISO8601 format. Default = current date.
 	UsageEndDate *time.Time
 }
 
 // OperationsClientPostBatchUsageEventOptions contains the optional parameters for the OperationsClient.PostBatchUsageEvent
 // method.
 type OperationsClientPostBatchUsageEventOptions struct {
-	// A unique string value for operation on the client. This parameter correlates all events from client operation with events
+// A unique string value for operation on the client. This parameter correlates all events from client operation with events
 // on the server side. If this value isn't provided, one will be generated and
 // provided in the response headers.
 	CorrelationID *string
 
-	// A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
+// A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
 // be generated and provided in the response headers.
 	RequestID *string
 }
 
 // OperationsClientPostUsageEventOptions contains the optional parameters for the OperationsClient.PostUsageEvent method.
 type OperationsClientPostUsageEventOptions struct {
-	// A unique string value for operation on the client. This parameter correlates all events from client operation with events
+// A unique string value for operation on the client. This parameter correlates all events from client operation with events
 // on the server side. If this value isn't provided, one will be generated and
 // provided in the response headers.
 	CorrelationID *string
 
-	// A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
+// A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
 // be generated and provided in the response headers.
 	RequestID *string
 }
