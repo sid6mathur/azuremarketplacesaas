@@ -1,13 +1,13 @@
 module github.com/fastah/azuremarketplacesaas/fulfillment
 
-go 1.23.0
-
-toolchain go1.23.7
-
-require github.com/Azure/azure-sdk-for-go/sdk/azcore v1.18.1
+go 1.24
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.10.1 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.18.1
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.10.1
+)
+
+require (
 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.11.1 // indirect
 	github.com/AzureAD/microsoft-authentication-library-for-go v1.4.2 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.3 // indirect
