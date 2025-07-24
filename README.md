@@ -1,6 +1,6 @@
 # Go bindings for Azure Marketplace Saas Fulfilment and Metering APIs
 
-This is an *Unofficial* Go SDK for Azure Marketplace Saas Fulfilment and Metering APIs, based on the OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/). USE AT YOUR OWN RISK.
+This is an *Unofficial* Go SDK for Azure Marketplace Saas Fulfilment and Metering APIs, based on the OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/).
 
 ## Installation
 
@@ -28,7 +28,7 @@ See the `fulfillement` package's [fulfillment_test.go](fulfillment/fulfillment_t
 
 See the `metering` package's [metering_test.go](metering/metering_test.go) file for example on how to use the API, including authorization.
 
-Once you have set the Azure AD app credentials in the [env.sh](env.sh) file, use the supplied [Makefile](Makefile) target to run the example-cum-test. It simply calls `go test -v` under the hood after setting the environment variables.
+Once you have set the Azure AD app credentials in the [env.sh](env.sh) file, use the supplied [Makefile](Makefile) target to run the example/test. It simply calls `go test -v` under the hood after setting the environment variables.
 
 ```bash
 make test-metering
