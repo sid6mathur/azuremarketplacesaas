@@ -14,7 +14,7 @@ const host = "https://marketplaceapi.microsoft.com/api"
 func NewFulfillmentClient(credential azcore.TokenCredential, options *policy.ClientOptions) (foc *OperationsClient, soc *SubscriptionOperationsClient, err error) {
 	popts := runtime.PipelineOptions{
 		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{}, nil)}}
-	cl, err := azcore.NewClient("UnofficialFulfillmentGo", "0.1.0", popts, options)
+	cl, err := azcore.NewClient(moduleName, moduleVersion, popts, options)
 	if err != nil {
 		return nil, nil, err
 	}
