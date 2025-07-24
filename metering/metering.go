@@ -10,6 +10,8 @@ import (
 // See https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-authentication#using-the-microsoft-entra-security-token
 const AzureMarketplaceSaaSMeteringWellKnownTenantID = "20e940b3-4c77-4b0b-9a53-9e16a1b010a7"
 
+const endpoint = "https://marketplaceapi.microsoft.com/api"
+
 // NewMeteringClient creates a new instance of OperationsClient with the specified values.
 // credential - used to authorize requests. Usually a credential from azidentity.
 // options - pass nil to accept the default values.
@@ -20,6 +22,6 @@ func NewMeteringClient(credential azcore.TokenCredential, scopes []string, optio
 	if err != nil {
 		return nil, err
 	}
-	soc := &OperationsClient{internal: cl}
+	soc := &OperationsClient{internal: cl, endpoint: endpoint}
 	return soc, nil
 }
