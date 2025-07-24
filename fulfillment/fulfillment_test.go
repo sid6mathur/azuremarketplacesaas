@@ -3,6 +3,7 @@ package fulfillment
 import (
 	"context"
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -34,4 +35,28 @@ func TestFulfillment(t *testing.T) {
 			fmt.Printf("sub: ID %s in status %s\n", *s.ID, *s.SaasSubscriptionStatus)
 		}
 	}
+}
+
+func TestSubOps(t *testing.T) {
+	cred, err := azidentity.NewEnvironmentCredential(nil)
+	if err != nil {
+		t.Logf("failed to obtain a credential: %v", err)
+		return
+	}
+	fc, err := NewSubscriptionOperationsClient(cred, nil)
+	if err != nil {
+		t.Logf("failed to create an Azure Marketplace metering client: %v", err)
+		return
+	}
+	subID := os.Getenv("AZURE_SUBSCRIPTION_ID")
+	if subID == "" {
+		t.Logf("AZURE_SUBSCRIPTION_ID environment variable is not set")
+		return
+	}
+	resp, err := fc.ListOperations(context.Background(), subID, nil)
+	if err != nil {
+		t.Logf("failed to get list of ongoing operations associated with subscription %s: %v", subID, err)
+		return
+	}
+	t.Logf("Found %d ongoing operations for subscription %s", len(resp.OperationList.Operations), subID)
 }
