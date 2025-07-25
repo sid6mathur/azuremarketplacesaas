@@ -20,7 +20,7 @@ func TestMeteringClient(t *testing.T) {
 	}
 	// We request a token for scope AzureMarketplaceWellKnownTenantID + "/.default"
 	// since AZURE_TENANT_ID above is already allow-listed in the MPN portal's SaaS offer configuration.
-	mc, err := NewMeteringClient(cred, []string{AzureMarketplaceSaaSMeteringWellKnownTenantID + "/.default"}, nil)
+	mc, err := NewMeteringClient(cred, nil)
 	if err != nil {
 		t.Logf("failed to create an Azure Marketplace metering client: %v", err)
 		return
@@ -43,7 +43,7 @@ func TestMeteringPostEvent(t *testing.T) {
 		t.Logf("failed to obtain a credential: %v", err)
 		return
 	}
-	mc, err := NewMeteringClient(cred, []string{AzureMarketplaceSaaSMeteringWellKnownTenantID + "/.default"}, nil)
+	mc, err := NewMeteringClient(cred, nil)
 	if err != nil {
 		t.Logf("failed to create an Azure Marketplace metering client: %v", err)
 		return
