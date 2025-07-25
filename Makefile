@@ -5,13 +5,10 @@ SPECFILE_FULFILLMENT=./commercial-marketplace-openapi/Microsoft.Marketplace.SaaS
 # For API users; modify these tests and run them from these targets
 test-metering:
 	source ~/ful-env.sh && cd metering && go test -v ./*.go -run=TestMeteringClient
-test-usageevent-post:
 	source ~/ful-env.sh && cd metering && go test -v ./*.go -run=TestMeteringPostEvent
 
 test-fulfillment:
 	source ~/ful-env.sh && cd fulfillment && go test -v ./*.go -run=TestFulfillment
-
-test-subops:
 	source ~/ful-env.sh && cd fulfillment && go test -v ./*.go -run=TestSubOps
 
 # For package maintainers; modify these targets to update the generated code
