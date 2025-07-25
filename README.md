@@ -1,10 +1,10 @@
-# Go bindings for Azure Marketplace Saas Fulfilment and Metering APIs
+# Go bindings for Azure Marketplace Saas Fulfillment and Metering APIs
 
-This is an *Unofficial* Go SDK for software publishers who wish to integrate their SaaS product with Azure Marketplace's [SaaS Fulfilment](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-subscription-api) and [SaaS Metering APIs](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-apis). The SDK uses auto-generated code from OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/).
+This is an *Unofficial* Go SDK for software publishers who wish to integrate their SaaS product with Azure Marketplace's [SaaS Fulfillment](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-subscription-api) and [SaaS Metering APIs](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-apis). The SDK uses auto-generated code from OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/).
 
 ## Installation
 
-There are separate packages for Fulfilment and Metering APIs. You can install them using `go get`.
+There are separate packages for Fulfillment and Metering APIs. You can install them using `go get`.
 
 ```go
 import github.com/fastah/azuremarketplacesaas/fulfillment
