@@ -6,8 +6,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/runtime"
 )
 
-// The well-know default scope for SaaS fulfillment APIs as described here: https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-registration#request-body
-const marketplaceSaaSFulfillmentApiScope = "20e940b3-4c77-4b0b-9a53-9e16a1b010a7/.default"
+// The well-known default Entra ID scope for SaaS fulfillment APIs as described here: https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-registration#request-body
+const WellKnownScopeSaaSFulfillment = "20e940b3-4c77-4b0b-9a53-9e16a1b010a7/.default"
 
 // API endpoint for Azure Marketplace SaaS publisher operations
 const endpoint = "https://marketplaceapi.microsoft.com/api"
@@ -17,7 +17,7 @@ const endpoint = "https://marketplaceapi.microsoft.com/api"
 // options - pass nil to accept the default values.
 func NewFulfillmentClient(credential azcore.TokenCredential, options *policy.ClientOptions) (*OperationsClient, error) {
 	popts := runtime.PipelineOptions{
-		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{marketplaceSaaSFulfillmentApiScope}, nil)}}
+		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{WellKnownScopeSaaSFulfillment}, nil)}}
 	cl, err := azcore.NewClient(moduleName, moduleVersion, popts, options)
 	if err != nil {
 		return nil, err
@@ -27,7 +27,7 @@ func NewFulfillmentClient(credential azcore.TokenCredential, options *policy.Cli
 
 func NewSubscriptionOperationsClient(credential azcore.TokenCredential, options *policy.ClientOptions) (*SubscriptionOperationsClient, error) {
 	popts := runtime.PipelineOptions{
-		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{marketplaceSaaSFulfillmentApiScope}, nil)}}
+		PerCall: []policy.Policy{runtime.NewBearerTokenPolicy(credential, []string{WellKnownScopeSaaSFulfillment}, nil)}}
 	cl, err := azcore.NewClient(moduleName, moduleVersion, popts, options)
 	if err != nil {
 		return nil, err
