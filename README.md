@@ -1,6 +1,10 @@
-# Go bindings for Azure Marketplace Saas Fulfillment and Metering APIs
+# Go SDK for Azure Marketplace Saas Fulfillment and Metering APIs
 
-This is an *Unofficial* Go SDK for software publishers who wish to integrate their SaaS product with Azure Marketplace's [SaaS Fulfillment](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-subscription-api) and [SaaS Metering APIs](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-apis). The SDK uses auto-generated code from OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/).
+This is an *Unofficial* Go SDK for software publishers who wish to integrate their SaaS product with Microsoft Commercial Marketplace's:
+-  Azure Marketplace [SaaS Fulfillment API](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-subscription-api) [![Go Reference](https://pkg.go.dev/badge/github.com/fastah/azuremarketplacesaas/fulfillment.svg)](https://pkg.go.dev/github.com/fastah/azuremarketplacesaas/fulfillment) 
+- Azure Marketplace [SaaS Metering API](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-apis) [![Go Reference](https://pkg.go.dev/badge/github.com/fastah/azuremarketplacesaas/metering.svg)](https://pkg.go.dev/github.com/fastah/azuremarketplacesaas/metering)
+
+The SDK uses auto-generated code from OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/).
 
 ## Installation
 
@@ -18,7 +22,7 @@ If your SaaS product doesn't need metering, you can of course skip the metering 
 
 ## Authorizing with Marketplace API endpoints
 
-Use the same Azure AD app registration that you have allow-listed in the Partner Center in your SaaS offer's technical configuration. You will need to provide the coresponding `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID` via the supplied [env.sh](env.sh) environment file.
+Use the same [Azure AD app registration](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/azure-ad-saas) that you have allow-listed in the Partner Center in your SaaS offer's technical configuration. You will need to provide the coresponding `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID` via the supplied [env.sh](env.sh) environment file.
 
 ## Using the Fulfillment package
 
@@ -27,28 +31,26 @@ See the `fulfillement` package's [fulfillment_test.go](fulfillment/fulfillment_t
 ### Usage - Fulfillment client
 
 ```go
+// Use Azure's official SDK for authentication
 cred, err := azidentity.NewEnvironmentCredential(nil)
-	if err != nil {
-		t.Logf("failed to obtain a credential: %v", err)
-		return
-	}
-	fc, err := NewFulfillmentClient(cred, nil)
-	if err != nil {
-		t.Logf("failed to create an Azure Marketplace metering client: %v", err)
-		return
-	}
-	pager := fc.NewListSubscriptionsPager(nil)
-	t.Logf("List of subscriptions:")
-	for pager.More() {
-		resp, err := pager.NextPage(context.Background())
-		if err != nil {
-			t.Errorf("failed to get next page of subscriptions: %v", err)
-			break
-		}
-		for _, s := range resp.Subscriptions {
-			fmt.Printf("sub: ID %s in status %s\n", *s.ID, *s.SaasSubscriptionStatus)
-		}
-	}
+
+// Build a client for SaaS Fulfillment API
+fc, err := NewFulfillmentClient(cred, nil)
+
+// Example of a Fulfillment-related operation
+pager := fc.NewListSubscriptionsPager(nil)
+
+t.Logf("List of subscriptions:")
+for pager.More() {
+    resp, err := pager.NextPage(context.Background())
+    if err != nil {
+        t.Errorf("failed to get next page of subscriptions: %v", err)
+        break
+    }
+    for _, s := range resp.Subscriptions {
+        fmt.Printf("sub: ID %s in status %s\n", *s.ID, *s.SaasSubscriptionStatus)
+    }
+}
 ```
 
 ## Using the Metering endpoint
@@ -64,21 +66,15 @@ make test-metering
 ### Usage - Metering client 
 
 ```go
+// Build a client for SaaS Metering API
 mc, err := NewMeteringClient(cred, nil)
-	if err != nil {
-		t.Logf("failed to create an Azure Marketplace metering client: %v", err)
-		return
-	}
-	ctx := context.Background()
-	// Example of listing previously posted metering events
-	events, err := mc.GetUsageEvent(ctx, startOfYearUTC(time.Now()), &OperationsClientGetUsageEventOptions{})
-	if err != nil {
-		t.Logf("failed to fetch previously-posted usage events: %v", err)
-		return
-	}
-	for _, event := range events.GetUsageEventArray {
-		t.Logf("Previously-posted Metering event: Date %s, Usage ResourceId = %s, dim = %s, units = %f on Plan %s", (*event.UsageDate).UTC().Format("2006-01-02"), *event.UsageResourceID, *event.Dimension, *event.ProcessedQuantity, *event.PlanID)
-	}
+
+// List previously posted metering events
+events, err := mc.GetUsageEvent(ctx, startOfYearUTC(time.Now()), &OperationsClientGetUsageEventOptions{})
+
+for _, event := range events.GetUsageEventArray {
+    t.Logf("Previously-posted Metering event: Date %s, Usage ResourceId = %s, dim = %s, units = %f on Plan %s", (*event.UsageDate).UTC().Format("2006-01-02"), *event.UsageResourceID, *event.Dimension, *event.ProcessedQuantity, *event.PlanID)
+}
 ```
 
 ## Maintainers only: Updating the Go client from OpenAPI spec
@@ -119,4 +115,6 @@ git tag fulfillment/v0.0.1
 
 - [SaaS Metering API - Marketplace metering service authentication strategies](https://learn.microsoft.com/en-us/partner-center/marketplace/marketplace-metering-service-authentication)
 
-- 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
