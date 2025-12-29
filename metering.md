@@ -6,7 +6,7 @@ This markdown file can be passed as `autorest metering.md`, and the block below 
 go: true
 output-folder: './metering'
 file-prefix: 'gen_'
-module: github.com/fastah/azuremarketplacesaas/metering
+module: github.com/sid6mathur/azuremarketplacesaas/metering
 module-version: '0.11.0'
 openapi-type: data-plane
 azure-arm: false

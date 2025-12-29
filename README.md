@@ -81,6 +81,8 @@ for _, event := range events.GetUsageEventArray {
 
 ### Submodule fetch from Microsoft's OpenAPI repo
 
+While clonig this repository, specifying the `--recursive` flag will pull Microsoft's OpenAPI specifications submodule too. But if you have already cloned the repository without it, run the following command at this repository's root directory:
+
 ```bash
 git submodule update --init --recursive
 ```
