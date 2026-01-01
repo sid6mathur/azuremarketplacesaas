@@ -76,8 +76,13 @@ for _, event := range events.GetUsageEventArray {
     t.Logf("Previously-posted Metering event: Date %s, Usage ResourceId = %s, dim = %s, units = %f on Plan %s", (*event.UsageDate).UTC().Format("2006-01-02"), *event.UsageResourceID, *event.Dimension, *event.ProcessedQuantity, *event.PlanID)
 }
 ```
+## References
 
-## Maintainers only: Updating the Go client from OpenAPI spec
+- [Overview of SaaS subscription lifecycle](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-life-cycle)
+
+- [SaaS Metering API - Marketplace metering service authentication strategies](https://learn.microsoft.com/en-us/partner-center/marketplace/marketplace-metering-service-authentication)
+
+## Maintainers only
 
 ### Submodule fetch from Microsoft's OpenAPI repo
 
@@ -95,6 +100,14 @@ The following [Makefile](Makefile) target will install the `autorest` tool with 
 make autorest-go-update-with-reset
 ```
 
+### Updating the Go model from Microsoft's OpenAPI spec
+The following [Makefile](Makefile) target will rebuild the Go client and associated model files from the submodule's OpenAPI specifications as published by Microsoft.
+
+```bash
+make autorest-go-update-with-reset
+```
+
+
 ### Runnng tests
 
 Add your Azure AD app credentials to the [env.sh](env.sh) file, and run the following command to run the tests:
@@ -111,12 +124,6 @@ git tag metering/v0.0.1
 git tag fulfillment/v0.0.1
 ```
 
-### References
-
-- [Overview of SaaS subscription lifecycle](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-life-cycle)
-
-- [SaaS Metering API - Marketplace metering service authentication strategies](https://learn.microsoft.com/en-us/partner-center/marketplace/marketplace-metering-service-authentication)
-
-## License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
