@@ -6,7 +6,7 @@
 package fulfillment
 
 const (
-	moduleName = "github.com/fastah/azuremarketplacesaas/fulfillment"
-	moduleVersion = "v0.11.0"
+	moduleName = "github.com/sid6mathur/azuremarketplacesaas/fulfillment"
+	moduleVersion = "v0.1.0"
 )
 

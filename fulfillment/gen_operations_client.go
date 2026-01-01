@@ -222,6 +222,9 @@ func (client *OperationsClient) listAvailablePlansCreateRequest(ctx context.Cont
 	}
 	reqQP := req.Raw().URL.Query()
 	reqQP.Set("api-version", "2018-08-31")
+	if options != nil && options.PlanID != nil {
+		reqQP.Set("planId", *options.PlanID)
+	}
 	req.Raw().URL.RawQuery = reqQP.Encode()
 	req.Raw().Header["Accept"] = []string{"application/json"}
 	if options != nil && options.CorrelationID != nil {

@@ -20,9 +20,11 @@ autorest-go-update-with-reset:
 	autorest --go --help
 
 codegen-metering: metering.md
+	rm ./metering/gen_*.go
 	autorest metering.md --input-file=$(SPECFILE_METERING).json
-	cd ./metering && go mod tidy && go get -u ./... && go mod tidy
+	cd ./metering && go mod tidy && go get -u . && go mod tidy
 
 codegen-fulfillment: fulfillment.md
+	rm ./fulfillment/gen_*.go
 	autorest fulfillment.md --input-file=$(SPECFILE_FULFILLMENT).json
-	cd ./fulfillment && go mod tidy && go get -u ./... && go mod tidy
+	cd ./fulfillment && go mod tidy && go get -u . && go mod tidy

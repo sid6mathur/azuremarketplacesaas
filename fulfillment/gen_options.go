@@ -51,6 +51,9 @@ type OperationsClientListAvailablePlansOptions struct {
 // provided in the response headers.
 	CorrelationID *string
 
+// planid
+	PlanID *string
+
 // A unique string value for tracking the request from the client, preferably a GUID. If this value isn't provided, one will
 // be generated and provided in the response headers.
 	RequestID *string

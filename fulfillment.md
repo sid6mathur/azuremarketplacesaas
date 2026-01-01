@@ -9,7 +9,6 @@ go: true
 output-folder: './fulfillment'
 file-prefix: 'gen_'
 module: github.com/sid6mathur/azuremarketplacesaas/fulfillment
-module-version: '0.11.0'
 openapi-type: data-plane
 azure-arm: false
 license-header: MICROSOFT_MIT_NO_VERSION

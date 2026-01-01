@@ -52,7 +52,7 @@ type Plan struct {
 	MinQuantity *int64
 	PlanComponents *PlanComponents
 	PlanID *string
-	SourceOffers []*string
+	SourceOffers []*SourceOffer
 }
 
 type PlanComponents struct {
@@ -89,6 +89,10 @@ type SaaSOperation struct {
 	Status *OperationStatusEnum
 	SubscriptionID *string
 	TimeStamp *time.Time
+}
+
+type SourceOffer struct {
+	ExternalID *string
 }
 
 type SubscriberPlan struct {
@@ -134,6 +138,7 @@ type SubscriptionPlans struct {
 }
 
 type SubscriptionTerm struct {
+	ChargeDuration *string
 	EndDate *time.Time
 	StartDate *time.Time
 	TermUnit *TermUnitEnum

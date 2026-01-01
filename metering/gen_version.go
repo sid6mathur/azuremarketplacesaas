@@ -6,7 +6,7 @@
 package metering
 
 const (
-	moduleName = "github.com/fastah/azuremarketplacesaas/metering"
-	moduleVersion = "v0.11.0"
+	moduleName = "github.com/sid6mathur/azuremarketplacesaas/metering"
+	moduleVersion = "v0.1.0"
 )
 

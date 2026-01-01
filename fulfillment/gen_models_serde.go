@@ -465,6 +465,33 @@ func (s *SaaSOperation) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// MarshalJSON implements the json.Marshaller interface for type SourceOffer.
+func (s SourceOffer) MarshalJSON() ([]byte, error) {
+	objectMap := make(map[string]any)
+	populate(objectMap, "externalId", s.ExternalID)
+	return json.Marshal(objectMap)
+}
+
+// UnmarshalJSON implements the json.Unmarshaller interface for type SourceOffer.
+func (s *SourceOffer) UnmarshalJSON(data []byte) error {
+	var rawMsg map[string]json.RawMessage
+	if err := json.Unmarshal(data, &rawMsg); err != nil {
+		return fmt.Errorf("unmarshalling type %T: %v", s, err)
+	}
+	for key, val := range rawMsg {
+		var err error
+		switch key {
+		case "externalId":
+				err = unpopulate(val, "ExternalID", &s.ExternalID)
+			delete(rawMsg, key)
+		}
+		if err != nil {
+			return fmt.Errorf("unmarshalling type %T: %v", s, err)
+		}
+	}
+	return nil
+}
+
 // MarshalJSON implements the json.Marshaller interface for type SubscriberPlan.
 func (s SubscriberPlan) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]any)
@@ -617,6 +644,7 @@ func (s *SubscriptionPlans) UnmarshalJSON(data []byte) error {
 // MarshalJSON implements the json.Marshaller interface for type SubscriptionTerm.
 func (s SubscriptionTerm) MarshalJSON() ([]byte, error) {
 	objectMap := make(map[string]any)
+	populate(objectMap, "chargeDuration", s.ChargeDuration)
 	populateDateTimeRFC3339(objectMap, "endDate", s.EndDate)
 	populateDateTimeRFC3339(objectMap, "startDate", s.StartDate)
 	populate(objectMap, "termUnit", s.TermUnit)
@@ -632,6 +660,9 @@ func (s *SubscriptionTerm) UnmarshalJSON(data []byte) error {
 	for key, val := range rawMsg {
 		var err error
 		switch key {
+		case "chargeDuration":
+				err = unpopulate(val, "ChargeDuration", &s.ChargeDuration)
+			delete(rawMsg, key)
 		case "endDate":
 				err = unpopulateDateTimeRFC3339(val, "EndDate", &s.EndDate)
 			delete(rawMsg, key)
