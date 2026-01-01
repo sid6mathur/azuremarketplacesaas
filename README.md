@@ -101,10 +101,11 @@ make autorest-go-update-with-reset
 ```
 
 ### Updating the Go model from Microsoft's OpenAPI spec
-The following [Makefile](Makefile) target will rebuild the Go client and associated model files from the submodule's OpenAPI specifications as published by Microsoft.
+The following [Makefile](Makefile) targets will rebuild the Go client and associated model files from the submodule's OpenAPI specifications.
 
 ```bash
-make autorest-go-update-with-reset
+make codegen-metering
+make codegen-fulfillment
 ```
 
 
