@@ -1,8 +1,8 @@
 # Go SDK for Azure Marketplace Saas Fulfillment and Metering APIs
 
 This is an *Unofficial* Go SDK for software publishers who wish to integrate their SaaS product with Microsoft Commercial Marketplace's:
--  Azure Marketplace [SaaS Fulfillment API](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-subscription-api) [![Go Reference](https://pkg.go.dev/badge/github.com/fastah/azuremarketplacesaas/fulfillment.svg)](https://pkg.go.dev/github.com/fastah/azuremarketplacesaas/fulfillment) 
-- Azure Marketplace [SaaS Metering API](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-apis) [![Go Reference](https://pkg.go.dev/badge/github.com/fastah/azuremarketplacesaas/metering.svg)](https://pkg.go.dev/github.com/fastah/azuremarketplacesaas/metering)
+-  Azure Marketplace [SaaS Fulfillment API](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/pc-saas-fulfillment-subscription-api) [![Go Reference](https://pkg.go.dev/badge/github.com/sid6mathur/azuremarketplacesaas/fulfillment.svg)](https://pkg.go.dev/github.com/sid6mathur/azuremarketplacesaas/fulfillment) 
+- Azure Marketplace [SaaS Metering API](https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-metering-service-apis) [![Go Reference](https://pkg.go.dev/badge/github.com/sid6mathur/azuremarketplacesaas/metering.svg)](https://pkg.go.dev/github.com/sid6mathur/azuremarketplacesaas/metering)
 
 The SDK uses auto-generated code from OpenAPI 3 specification published by Microsoft's Marketplace team at this [repository](https://github.com/microsoft/commercial-marketplace-openapi/).
 
@@ -11,11 +11,11 @@ The SDK uses auto-generated code from OpenAPI 3 specification published by Micro
 There are separate packages for Fulfillment and Metering APIs. You can install them using `go get`.
 
 ```go
-import github.com/fastah/azuremarketplacesaas/fulfillment
+import github.com/sid6mathur/azuremarketplacesaas/fulfillment
 ```
 
 ```go
-import github.com/fastah/azuremarketplacesaas/metering
+import github.com/sid6mathur/azuremarketplacesaas/metering
 ```
 
 If your SaaS product doesn't need metering, you can of course skip the metering package.
